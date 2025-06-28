@@ -6,13 +6,15 @@ public class Main {
 	public static void main(String[] args) throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		int T=Integer.parseInt(br.readLine());
-		StringBuilder sb= new StringBuilder();
-		for(int i=1;i<=T;i++) {
+		int[] S=new int[T];
+		for(int i=0;i<T;i++) {
 			StringTokenizer st=new StringTokenizer(br.readLine());
 			int a=Integer.parseInt(st.nextToken());
 			int b=Integer.parseInt(st.nextToken());
-			sb.append("Case #"+i+": ").append(a+b).append("\n");
+			S[i]=a+b;
 		}
-		System.out.println(sb);
+		for(int i=0;i<T;i++) {
+			System.out.println("Case #"+(i+1)+": "+S[i]);
+		}
 	}
 }
