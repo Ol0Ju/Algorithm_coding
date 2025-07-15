@@ -1,6 +1,4 @@
 import java.io.*;
-import java.time.*;
-import java.time.format.TextStyle;
 import java.util.*;
 
 public class Main {
@@ -8,11 +6,17 @@ public class Main {
 	public static void main(String[] args) throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st=new StringTokenizer(br.readLine());
-		int n1=Integer.parseInt(st.nextToken());
-		int n2=Integer.parseInt(st.nextToken());
-		LocalDate date=LocalDate.of(2007, n1, n2);
-		DayOfWeek dow=date.getDayOfWeek();
-		String day=dow.getDisplayName(TextStyle.SHORT,Locale.US);
-		System.out.println(day.toUpperCase());
+		
+		int m=Integer.parseInt(st.nextToken());
+		int d=Integer.parseInt(st.nextToken());
+		
+		String[] days= { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
+		int[] months= {31,28,31,30,31,30,31,31,30,31,30,31};
+		int sum=0;
+		for(int i=0;i<m-1;i++) {
+			sum+=months[i];
+		}
+		sum+=d;
+		System.out.println(days[sum%7]);
 	}
 }
