@@ -4,27 +4,28 @@ public class Main{
 
 	public static void main(String[] args) throws IOException{
 		BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int N=Integer.parseInt(bf.readLine());
 		
-		StringBuilder sb=new StringBuilder();
-		for(int i=0;i<N;i++) {
-			for(int j=N-1;j>i;j--) {
-				sb.append(" ");
+		for(int i=0;i<N;i++) { 
+			for(int j=N-1;j>i;j--) { 
+				bw.write(" ");
 			}
 			for(int j=0;j<i+1;j++) {
-				sb.append("*");
+				bw.write("*");
 			}
-			sb.append("\n");
+			bw.write("\n");
 		}
 		for(int i=0;i<N-1;i++) {
 			for(int j=0;j<i+1;j++) {
-				sb.append(" ");
+				bw.write(" ");
 			}
 			for(int j=N-1;j>i;j--) {
-				sb.append("*");
+				bw.write("*");
 			}
-			sb.append("\n");
+			bw.write("\n");
 		}
-		System.out.println(sb);
+		bw.close();
+		bf.close();
 	}
 }
