@@ -6,8 +6,8 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		int N=Integer.parseInt(br.readLine());
-		int[] ps=new int[N+1];
-		int[] d=new int[N+1];
+		int[] ps=new int[1001];
+		int[] d=new int[1001];
 		
 		StringTokenizer st=new StringTokenizer(br.readLine());
 		for(int i=1;i<=N;i++) {
