@@ -11,13 +11,13 @@ public class Main {
 			int N=Integer.parseInt(br.readLine());
 			long[] d=new long[101];
 			
-			d[0]=1;
+            //d[0]=1;
 			d[1]=1;
 			d[2]=1;
-			for(int j=3;j<N;j++) {
+			for(int j=3;j<=N;j++) {
 				d[j]=d[j-3]+d[j-2];
 			}
-			sb.append(d[N-1]).append("\n");
+			sb.append(d[N]).append("\n");
 		}
 		System.out.println(sb);
 	}
