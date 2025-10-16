@@ -4,9 +4,7 @@ import java.util.*;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb=new StringBuilder();
-		
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));		
 		int N=Integer.parseInt(br.readLine());
 		
 		//나이범위 1~200
@@ -22,7 +20,8 @@ public class Main {
 			String nm=st.nextToken();
 			p[age].append(age+" "+nm).append("\n");
 		}
-		
+        
+		StringBuilder sb=new StringBuilder();
 		for(StringBuilder val:p) {
 			sb.append(val);
 		}
