@@ -1,3 +1,4 @@
+//스택 X
 import java.io.*;
 import java.util.*;
 
@@ -6,16 +7,16 @@ public class Main {
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		String s=br.readLine();
 		
-		Stack<Character> stack=new Stack<>();
 		int count=0;
+		int open=0;
 		for(int i=0;i<s.length();i++) {
 			char c=s.charAt(i);
 			if(c=='(') {
-				stack.push(c);
+				open++;
 			}else {
-				stack.pop();
+				open--;
 				if(s.charAt(i-1)=='(') {
-					count+=stack.size();
+					count+=open;
 				}
 				else {
 					count++;
