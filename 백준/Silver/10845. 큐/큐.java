@@ -7,29 +7,33 @@ public class Main {
 		StringBuilder sb=new StringBuilder();
 		int N=Integer.parseInt(br.readLine()); //명령의 수
 		
-		Queue<Integer> q=new LinkedList<>();
-		int value=-1;
+		int[] q=new int[N];
+		int front=0;
+		int back=0;
 		for(int i=0;i<N;i++) {
 			String[] cmd=br.readLine().split(" ");
 			switch(cmd[0]) {
 				case "push":
-					value=Integer.parseInt(cmd[1]);
-					q.add(value);
+					q[back++]=Integer.parseInt(cmd[1]);
 					break;
 				case "pop":
-					sb.append(q.isEmpty()?-1:q.poll()).append("\n");
+					if(front==back) {
+						sb.append(-1).append("\n");
+					}else {
+						sb.append(q[front++]).append("\n");
+					}
 					break;
 				case "size":
-					sb.append(q.size()).append("\n");
+					sb.append(back-front).append("\n");
 					break;
 				case "empty":
-					sb.append(q.isEmpty()?1:0).append("\n");
+					sb.append(front==back?1:0).append("\n");
 					break;
 				case "front":
-					sb.append(q.isEmpty()?-1:q.peek()).append("\n");
+					sb.append(front==back?-1:q[front]).append("\n");
 					break;
 				case "back":
-					sb.append(q.isEmpty()?-1:value).append("\n");
+					sb.append(front==back?-1:q[back-1]).append("\n");
 					break;
 			}
 		}
