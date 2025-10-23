@@ -7,37 +7,39 @@ public class Main {
 		StringBuilder sb=new StringBuilder();
 		
 		int N=Integer.parseInt(br.readLine());
-		int value=0;
+		int[] dq=new int[2*N];
+		int front=N;
+		int back=N;
 		
-		Deque<Integer> dq=new ArrayDeque();
 		for(int i=0;i<N;i++) {
-			String[] cmd=br.readLine().split(" ");
-			switch(cmd[0]) {
+			StringTokenizer st= new StringTokenizer(br.readLine());
+			String cmd=st.nextToken();
+			switch(cmd) {
 				case "push_front":
-					value=Integer.parseInt(cmd[1]);
-					dq.addFirst(value);
+					int x1=Integer.parseInt(st.nextToken());
+					dq[--front]=x1;
 					break;
 				case "push_back":
-					value=Integer.parseInt(cmd[1]);
-					dq.addLast(value);
+					int x2=Integer.parseInt(st.nextToken());
+					dq[back++]=x2;
 					break;
 				case "pop_front":
-					sb.append(dq.isEmpty()?-1:dq.pollFirst()).append("\n");
+					sb.append(front==back?-1:dq[front++]).append("\n");
 					break;
 				case "pop_back":
-					sb.append(dq.isEmpty()?-1:dq.pollLast()).append("\n");
+					sb.append(front==back?-1:dq[--back]).append("\n");
 					break;
 				case "size":
-					sb.append(dq.size()).append("\n");
+					sb.append(back-front).append("\n");
 					break;
 				case "empty":
-					sb.append(dq.isEmpty()?1:0).append("\n");
+					sb.append(front==back?1:0).append("\n");
 					break;
 				case "front":
-					sb.append(dq.isEmpty()?-1:dq.peekFirst()).append("\n");
+					sb.append(front==back?-1:dq[front]).append("\n");
 					break;
 				case "back":
-					sb.append(dq.isEmpty()?-1:dq.peekLast()).append("\n");
+					sb.append(front==back?-1:dq[back-1]).append("\n");
 					break;
 			}
 		}
