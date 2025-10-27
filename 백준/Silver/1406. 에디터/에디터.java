@@ -3,49 +3,44 @@ import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
-		
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));		
 		String s=br.readLine();//문자열
 		int N=Integer.parseInt(br.readLine());//명령수
 		
-		Deque<Character> left=new ArrayDeque<>();
-		Deque<Character> right=new ArrayDeque<>();
+		LinkedList<Character> list=new LinkedList<>();
 		
 		for(char c:s.toCharArray()) {
-			left.addLast(c);
+			list.add(c);
 		}
 		
-		for(int i=0;i<N;i++) {
+		ListIterator<Character> cursor=list.listIterator(list.size());
+		
+		while(N-->0) {
 			String cur=br.readLine();
 			switch(cur.charAt(0)) {
 				case 'L':
-					if(!left.isEmpty()) {
-						right.addFirst(left.removeLast());
+					if(cursor.hasPrevious()) {
+						cursor.previous();
 					}
 					break;
 				case 'D':
-					if(!right.isEmpty()) {
-						left.addLast(right.removeFirst());
+					if(cursor.hasNext()) {
+						cursor.next();
 					}
 					break;
 				case 'B':
-					if(!left.isEmpty()) {
-						left.removeLast();
+					if(cursor.hasPrevious()) {
+                        cursor.previous();
+						cursor.remove();
 					}
 					break;
 				case 'P':
-					left.addLast(cur.charAt(2));
+					cursor.add(cur.charAt(2));
 					break;
 			}
 		}
-		while(!left.isEmpty()){
-			bw.write(left.removeFirst());;
-		}
-		while(!right.isEmpty()) {
-			bw.write(right.removeFirst());
-		}
-		bw.flush();
-		bw.close();
+		StringBuilder sb = new StringBuilder();
+		for(char ch:list)	sb.append(ch);
+		System.out.println(sb);
 	}	
 }
