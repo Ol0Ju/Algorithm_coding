@@ -9,11 +9,11 @@ public class Main {
 		String s=br.readLine();//문자열
 		int N=Integer.parseInt(br.readLine());//명령수
 		
-		Stack<Character> left=new Stack<>();
-		Stack<Character> right=new Stack<>();
+		Deque<Character> left=new ArrayDeque<>();
+		Deque<Character> right=new ArrayDeque<>();
 		
-		for(int i=0;i<s.length();i++) {
-			left.add(s.charAt(i)); //abcd 세팅
+		for(char c:s.toCharArray()) {
+			left.addLast(c);
 		}
 		
 		for(int i=0;i<N;i++) {
@@ -21,31 +21,31 @@ public class Main {
 			switch(cur.charAt(0)) {
 				case 'L':
 					if(!left.isEmpty()) {
-						right.push(left.pop());
+						right.addFirst(left.removeLast());
 					}
 					break;
 				case 'D':
 					if(!right.isEmpty()) {
-						left.push(right.pop());
+						left.addLast(right.removeFirst());
 					}
 					break;
 				case 'B':
 					if(!left.isEmpty()) {
-						left.pop();
+						left.removeLast();
 					}
 					break;
 				case 'P':
-					left.push(cur.charAt(2));
+					left.addLast(cur.charAt(2));
 					break;
 			}
 		}
 		while(!left.isEmpty()){
-			right.push(left.pop());
+			bw.write(left.removeFirst());;
 		}
 		while(!right.isEmpty()) {
-			bw.write(right.pop());
+			bw.write(right.removeFirst());
 		}
+		bw.flush();
 		bw.close();
-		br.close();
 	}	
 }
