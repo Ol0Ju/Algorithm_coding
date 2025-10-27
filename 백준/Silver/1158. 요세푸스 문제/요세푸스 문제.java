@@ -16,8 +16,7 @@ public class Main {
 		sb.append("<");
 		while(q.size()>1) {
 			for(int i=0;i<K-1;i++) {
-				int val=q.poll();
-				q.add(val);
+				q.add(q.poll());
 			}
 			sb.append(q.poll()).append(", ");
 		}
