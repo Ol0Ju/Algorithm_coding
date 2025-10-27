@@ -9,18 +9,21 @@ public class Main {
 		int N=Integer.parseInt(st.nextToken());
 		int K=Integer.parseInt(st.nextToken());
 		
-		Queue<Integer> q=new LinkedList<>();
+		List<Integer> list=new ArrayList<>();
 		for(int i=1;i<=N;i++) {
-			q.add(i);
+			list.add(i);
 		}
+		
 		sb.append("<");
-		while(q.size()>1) {
-			for(int i=0;i<K-1;i++) {
-				q.offer(q.poll());
+		int idx=0;
+		while(!list.isEmpty()) {
+			idx=(idx+K-1)%list.size();
+			sb.append(list.remove(idx));
+			if(!list.isEmpty()) {
+				sb.append(", ");
 			}
-			sb.append(q.poll()).append(", ");
 		}
-		sb.append(q.poll()).append(">");
+		sb.append(">");
 		System.out.println(sb);
 	}	
 }
