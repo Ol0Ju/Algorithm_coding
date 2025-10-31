@@ -5,13 +5,12 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb=new StringBuilder();
-		int T=Integer.parseInt(br.readLine());
-		int[] tt=new int[100];
+		int T=Integer.parseInt(br.readLine());	
 		
-		
-		for(int i=0;i<T;i++) {
+		while(T-->0) {
 			StringTokenizer st=new StringTokenizer(br.readLine());
 			int n=Integer.parseInt(st.nextToken());
+			int[] tt=new int[n];
 			for(int j=0;j<n;j++) {
 				tt[j]=Integer.parseInt(st.nextToken());
 			}
