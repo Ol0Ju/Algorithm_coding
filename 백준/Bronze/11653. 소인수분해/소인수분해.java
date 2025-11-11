@@ -7,7 +7,7 @@ public class Main {
 		
 		int N=Integer.parseInt(br.readLine());
 		
-		for(int i=2;i<=Math.sqrt(N);i++) {
+		for(int i=2;i*i<=N;i++) {
 			while(N%i==0) {
 				sb.append(i).append("\n");
 				N/=i;
