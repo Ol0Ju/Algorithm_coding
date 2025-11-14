@@ -39,11 +39,11 @@ public class Main {
 		System.out.println(count);
 	}
 	private static void DFS(int v) {
-		if(visited[v])	return;
 		visited[v]=true;
-		for(int i:A[v]) {
-			if(!visited[i]) {
-				DFS(i);
+		for(int i=0;i<A[v].size();i++) {
+			int next = A[v].get(i);
+			if(!visited[next]) {
+				DFS(next);
 			}
 		}	
 	}
