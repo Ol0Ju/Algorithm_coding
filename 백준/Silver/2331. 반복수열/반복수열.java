@@ -1,8 +1,11 @@
+//DFS
 import java.io.*;
 import java.util.*;
 
 public class Main {	
 	static int P;
+	static int[] visited=new int[300000];
+	static int answer=0;
 	
 	static int getNext(int a) {
 		int sum=0;
@@ -13,6 +16,20 @@ public class Main {
 		}
 		return sum;
 	}
+	
+	static void DFS(int a, int depth) {
+		if(visited[a]!=0) {
+			answer=visited[a]-1;
+			return;
+		}
+		
+		visited[a]=depth;
+		
+		int next=getNext(a);
+		DFS(next,depth+1);
+		
+	}
+	
 	public static void main(String[] args) throws IOException {
 		
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
@@ -21,20 +38,8 @@ public class Main {
 		int A=Integer.parseInt(st.nextToken());
 		P=Integer.parseInt(st.nextToken());
 		
-		LinkedList<Integer> list=new LinkedList<>();
-		list.add(A);
+		DFS(A,1);
 		
-		while(true) {
-			int next=getNext(list.getLast());
-			
-			//next가 리스트에 있냐?
-			if(list.contains(next)) {
-				int idx=list.indexOf(next);
-				System.out.println(idx);
-				break;
-			}
-			list.add(next);
-		}
+		System.out.println(answer);
 	}
-	
 }
